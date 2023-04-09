@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UBMerch</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Money+Money&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark shadow-5-strong">
+		<div class="container-fluid">
+			<a class="navbar-brand"><img src="source/LogoUBM.png" alt="" href="index.html"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.html#shop">Shop</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
+					</li>
+					<li class="nav-item navbar-brand">
+						<a href="cart.html"><img src="source/cart.png" alt="Cart icon" width="20" class="cartitm"><span id="cart-count">0</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="contactatas">
+		<section class="contact">
+			<h2>Contact Us</h2>
+			<p>If you have any questions or inquiries, feel free to contact us using the information below:</p>
+			<form action="send-email.php" method="POST">
+                <br>
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required>
+                <br><br>
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required>
+                <br><br> 
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" required></textarea>
+
+				<button type="submit">Send Message</button>
+			</form>
+		</section>
+	</main>
+
+	<footer>
+		<center><b><p>&copy; 2023 UBMerch. All rights reserved.</p></b></center>
+			<div class="social-icons">
+			  <a href="https://www.instagram.com/bani.ubm/" target="_blank">
+				<i class="fab fa-instagram" id="instagram"></i>
+			  </a>
+			  <div>
+				<a href="https://www.tiktok.com/@bani.ubm?_t=8bCyFSOLt8T&_r=1" target="_blank">
+					<i class="fab fa-tiktok" id="tiktok"></i>
+				  </a>
+			  </div>
+				<div >
+					<a href="https://wa.me/62081229554421" target="_blank">
+						<i class="fab fa-whatsapp" id="whatsapp"></i>
+					  </a>
+				</div>
+					  <div>
+						<a href="https://open.spotify.com" target="_blank"><i class="fab fa-spotify" id="spotify"></i></a>
+					 </div>
+			</div>
+	</footer>
+</body>
+</html>

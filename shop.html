@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shop - My E-commerce Website</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Money+Money&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+	<header>
+
+		<nav>
+			<ul>
+				<div class="navbar">
+				<li><a href="index.html" class="active">Home</a></li>
+				<li><a href="#shop">Shop</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+				<li><a href="cart.html"><img src="source/cart.png" alt="Cart icon" width="20"><span id="cart-count">0</span></a></li>
+			</div>
+			</ul>
+		</nav>
+		<div class="menu-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+	</header>
+
+	<main>
+		<section class="products">
+			<div class="product">
+				<h2>Kategori Diskon</h2>
+				<ul>
+					<li>
+						<img src="source/kaos-ubm1-baru.jpg" alt="Product 1">
+						<span class="discount">50% off</span>
+						<div class="name">Product 1</div>
+						<div class="price">Rp. 50.000</div>
+						<div class="original-price">Rp. 100.000</div>
+						<button onclick="addToCart('Product 1', 50000)">Add to Cart</button>
+					</li>
+					<li>
+						<img src="source/kaos-ubm2-baru.jpg" alt="Product 2">
+						<span class="discount">30% off</span>
+						<div class="name">Product 2</div>
+						<div class="price">Rp. 70.000</div>
+						<div class="original-price">Rp. 100.000</div>
+						<button onclick="addToCart('Product 2', 70000)">Add to Cart</button>
+					</li>
+					<li>
+						<img src="#" alt="Product 3">
+						<span class="discount">20% off</span>
+						<div class="name">Product 3</div>
+						<div class="price">Rp. 80.000</div>
+						<div class="original-price">Rp. 100.000</div>
+						<button onclick="addToCart('Product 3', 80000)">Add to Cart</button>
+					</li>
+				</ul>
+			</div>
+		</section>
+		
+		
+
+    <script>
+		let cart = JSON.parse(localStorage.getItem('cart')) || [];
+		let cartCount = cart.length;
+		let cartItems = document.getElementById('cart-items');
+		let cartTotal = document.getElementById('cart-total');
+		let cartCountElem = document.getElementById('cart-count');
+
+        function addToCart(productName, price) {
+			cart.push({
+				name: productName,
+				price: price
+			});
+
+			alert(productName + ' added to cart!');
+            cartCount++;
+			cartCountElem.textContent = cartCount;
+            localStorage.setItem("cartCount", cartCount);
+            localStorage.setItem("cart", JSON.stringify(cart));
+		}
+
+		function updateCart() {
+			cartItems.innerHTML = '';
+			let total = 0;
+			cart.forEach(item => {
+				let row = document.createElement('tr');
+				let nameCell = document.createElement('td');
+				let priceCell = document.createElement('td');
+
+				nameCell.innerText = item.name;
+				priceCell.innerText = 'Rp' + item.price.toFixed(2);
+
+				row.appendChild(nameCell);
+				row.appendChild(priceCell);
+				cartItems.appendChild(row);
+
+				total += item.price;
+			});
+
+			cartTotal.innerText = total.toFixed(2);
+			cartCountElem.innerText = cartCount;
+			localStorage.setItem('cart', JSON.stringify(cart));
+		}
+
+		function checkout() {
+			if (cart.length === 0) {
+				alert('Your cart is empty!');
+				return;
+			}
+
+			let total = cart.reduce((acc, item) => acc + item.price, 0);
+			let cardNumber = prompt('Enter your card number:');
+
+			if (cardNumber === null) {
+				alert('Payment canceled.');
+				return;
+			}
+            
+			alert('Payment successful! Total amount: Rp' + total.toFixed(2));
+			cart = [];
+			cartCount = 0;
+			updateCart();
+            
+		}
+
+		updateCart();
+	</script>
+
+</body>
+</html>
